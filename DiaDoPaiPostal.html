@@ -1,0 +1,145 @@
+!Dia Do Pai!
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Feliz Dia do Pai</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(-45deg, #1e3c72, #2a5298, #0f2027, #203a43);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+    color: white;
+    text-align: center;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.card {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: auto;
+    padding: 40px;
+    max-width: 750px;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+p {
+    font-size: 1.3em;
+    line-height: 1.7;
+    min-height: 200px;
+}
+
+.signature {
+    margin-top: 30px;
+    font-size: 1.5em;
+    font-weight: bold;
+    opacity: 0;
+    animation: fadeIn 3s ease-in-out forwards;
+    animation-delay: 8s;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* Corações */
+.heart {
+    position: absolute;
+    color: #ff4d6d;
+    font-size: 20px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {transform: translateY(-10vh);}
+    100% {transform: translateY(110vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Feliz Dia do Pai ❤️</h1>
+    <p id="text"></p>
+
+    <div class="signature">
+        Com todo o meu amor,<br>
+        [Lisandro Leal]
+    </div>
+</div>
+
+<script>
+// Texto com efeito máquina de escrever
+const message = `Pai,
+
+Há coisas que nunca te disse…
+e talvez hoje seja o dia certo.
+
+Obrigado por nunca desistires de mim,
+mesmo quando eu próprio não acreditava.
+
+Obrigado por cada gesto silencioso,
+por cada sacrifício que fizeste sem pedir nada em troca.
+
+Tu não és só o meu pai…
+és o meu herói, o meu exemplo, o meu porto seguro.
+
+Se alguma vez duvidares do teu valor,
+lembra-te disto:
+
+Para mim, tu és tudo.
+
+Amo-te mais do que as palavras conseguem explicar. ❤️`;
+
+let i = 0;
+function typeWriter() {
+    if (i < message.length) {
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 40);
+    }
+}
+typeWriter();
+
+// Criar corações a cair
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 8000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
+```
